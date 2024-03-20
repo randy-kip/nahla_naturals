@@ -7,8 +7,7 @@ const Home = async () => {
   const products = await getProducts();
   return (
     <>
-      <HeroBanner />
-      {console.log(bannerData)}
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Essential Oils to fit your Lifestyle</p>
