@@ -13,7 +13,10 @@ const Home = async () => {
         <p>Essential Oils to fit your Lifestyle</p>
       </div>
       <div className="products-container">
-        {products?.map((product) => product.name)}
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
+        {console.log(products)}
       </div>
       <FooterBanner />
     </>
