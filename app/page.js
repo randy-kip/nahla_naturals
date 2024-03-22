@@ -16,9 +16,9 @@ const Home = async () => {
         {products?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
-        {console.log(products)}
+        {/* {console.log(products)} */}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   );
 };
