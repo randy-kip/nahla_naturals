@@ -14,6 +14,7 @@ const FooterBanner = ({
     product,
     buttonText,
     image,
+    desc,
   },
 }) => {
   return (
