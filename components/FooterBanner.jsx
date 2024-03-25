@@ -35,7 +35,8 @@ const FooterBanner = ({
           </Link>
         </div>
 
-        <img src={urlFor(image).url()} className="footer-banner-image" />
+        <img src={urlFor(image).url()} className="footer-banner-image" /*width="555px" height="555px" */ />
+        {/* <img src="/banner_images/hp.webp" className="footer-banner-image" /> */}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+// import Head from "next/head";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -7,9 +7,9 @@ import Footer from "./Footer";
 const Layout = ({ children }) => {
   return (
     <div className="layout">
-      <Head>
+      {/* <Head>
         <title>Nahla Naturals Store</title>
-      </Head>
+      </Head> */}
       <header>
         <Navbar />
       </header>
