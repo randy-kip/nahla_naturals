@@ -1,7 +1,9 @@
 import React from "react";
 import { client, urlFor } from "@/lib/client";
+import { getStaticProps } from "@/lib/query";
 
-const ProductDetails = ({ product, productsQuery }) => {
+const ProductDetails = async () => {
+  const { product, products } = await getStaticProps();
   const { image, name, details, price } = product;
 
   return (
@@ -16,57 +18,5 @@ const ProductDetails = ({ product, productsQuery }) => {
     </div>
   );
 };
-
-export async function getStaticPaths() {
-  const query = `*[_type == "product"] {
-    slug {
-      current
-    }
-  }`;
-
-  // const client = getClient(); // Obtain your Sanity client instance
-  const products = await client.fetch(query);
-
-  const paths = products.map((product) => ({
-    params: { 
-      slug: product.slug.current
-    }
-  }));
-
-  return {
-    paths,
-    fallback: 'blocking'
-  };
-}
-
-// export async function getProducts() {
-//   const products = await client.fetch('*[_type == "product"]');
-//   return products;
-// }
-
-export async function getProductDetails({ params: { slug } }) {
-  const product = await client.fetch(
-    `*[_type == "product" && slug.current == '${slug}'][0]`
-  );
-
-  const productsQuery = await client.fetch('*[_type == "product"]');
-
-  console.log(product);
-  return { product, productsQuery };
-}
-
-// export const getStaticProps = async ({ params: { slug } }) => {
-//   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-//   const productsQuery = '*[_type == "product"]';
-
-//   const product = await client.fetch(query);
-//   const products = await client.fetch(productsQuery);
-
-//   console.log(product);
-
-//   return {
-//     props: { products, product },
-//   };
-// };
 
 export default ProductDetails;
