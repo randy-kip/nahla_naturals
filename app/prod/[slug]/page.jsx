@@ -1,9 +1,10 @@
+// nahla_naturals\app\product\[slug]\page.jsx
 import React from "react";
-import { client, urlFor } from "@/lib/client";
+// import { client, urlFor } from "@/lib/client";
 import { getStaticProps } from "@/lib/query";
 
 const ProductDetails = async () => {
-  const { product, products } = await getStaticProps();
+  const { product, productsQuery } = await getStaticProps({ params: {slug} });
   const { image, name, details, price } = product;
 
   return (
