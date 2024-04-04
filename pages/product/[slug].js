@@ -5,32 +5,66 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+import "../../app/globals.css";
+import Head from "next/head";
 
 import { client, urlFor } from "@/lib/client";
-import { Product } from "../../components";
+import { Footer, Navbar, Product } from "../../components";
 // import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
-//   const [index, setIndex] = useState(0);
-//   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  //   const [index, setIndex] = useState(0);
+  //   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
-//   const handleBuyNow = () => {
-//     onAdd(product, qty);
+  //   const handleBuyNow = () => {
+  //     onAdd(product, qty);
 
-//     setShowCart(true);
-//   };
+  //     setShowCart(true);
+  //   };
 
   return (
-    <div>
-      <div className="product-detail-container">
-        <div>
-          <div className="image-container">
-            <img src={urlFor(image && image[0]).url()} />
+    <div className="layout">
+      <Head>
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/icons/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/icons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/icons/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/icons/site.webmanifest"></link>
+
+          <title>Nahla Naturals</title>
+          <meta name="description" content="This is for You, Baby" />
+        </Head>
+      <header>
+        <Navbar />
+      </header>
+      <div className="main-container">
+        <div className="product-detail-container">
+          <div>
+            <div className="image-container">
+              <img src={urlFor(image && image[0]).url()} />
+            </div>
           </div>
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
+
     // <div>
     //   <div className="product-detail-container">
     //     <div>
@@ -124,7 +158,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
 
-  console.log(product);
+  // console.log(product);
 
   return {
     props: { products, product },
